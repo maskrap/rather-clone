@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+ li {
+   list-style-type: none;
+ }
+
+ .image {
+   width: 25px;
+   align-items: center;
+ }

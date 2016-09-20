@@ -3,8 +3,19 @@
 <ul>
   <% @questions.each do |question| %>
   <h3>Would you rather: </h3>
-  <li><%= link_to question.option_one, question_path(question) %></li>
-  <li><%= link_to question.option_two, question_path(question) %></li>
+    <li><%= link_to question.option_one, question_path(question) %></li>
+      <%= form_for question do |q| %>
+        <%= q.hidden_field :option_one_votes, :value => question.option_one_votes + 1 %>
+        <%= image_submit_tag "checkmark.png", class: "image"  %>
+      <% end %>
+      <%= question.option_one_votes %>
+
+    <li><%= link_to question.option_two, question_path(question) %></li>
+    <%= form_for question do |q| %>
+      <%= q.hidden_field :option_two_votes, :value => question.option_two_votes + 1 %>
+      <%= image_submit_tag "checkmark.png", class: "image" %>
+    <% end %>
+    <%= question.option_two_votes %>
   <% end %>
 </ul>
 
