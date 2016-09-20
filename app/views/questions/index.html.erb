@@ -1,8 +1,11 @@
 <h2>Questions</h2>
 
 <ul>
-  <% @questions.each do |question| %>>
+  <% @questions.each do |question| %>
+  <h3>Would you rather: </h3>
   <li><%= link_to question.option_one, question_path(question) %></li>
   <li><%= link_to question.option_two, question_path(question) %></li>
   <% end %>
 </ul>
+
+<%= link_to "New Question", new_question_path %>
