@@ -2,17 +2,18 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    render :index
   end
 
   def new
     @question = Question.new
-    render :new
+    respond_to do |format|
+      format.html { render :new }
+      format.js
+    end
   end
 
   def show
     @question = Question.find(params[:id])
-    render :show
   end
 
   def create
@@ -26,7 +27,10 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
-    render :edit
+    respond_to do |format|
+      format.html { render :edit }
+      format.js
+    end
   end
 
   def update
